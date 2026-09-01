@@ -30,6 +30,27 @@ Domain đã trỏ về Cloudflare, nên đường ít ma sát nhất là Cloudfl
 4. Sau khi deploy: tab **Custom domains** → thêm `tritdx.io.vn` và `www.tritdx.io.vn`.
    Cloudflare tự tạo bản ghi DNS, không phải thêm tay.
 
+### Nối auto-deploy từ GitHub
+
+Cloudflare Dashboard → Workers & Pages → `tritdx-portfolio` → Settings → Build
+→ Git repository → **Connect**. Điền:
+
+| Trường | Giá trị |
+|---|---|
+| Git account | `TriTran1911` |
+| Repository | `tritdx-portfolio` |
+| Production branch | `main` |
+| Framework preset | **None** |
+| Build command | `npm run build` |
+| Build output directory | `dist` |
+| Root directory | để trống |
+
+`.node-version` ghim Node 22 để bản build trên Cloudflare không dùng Node cũ hơn
+mức Vite 6 cần.
+
+Sau khi nối Git, **deploy bằng cách push lên `main`**, đừng dùng `npm run deploy`
+nữa — hai đường cùng đẩy vào một project sẽ chồng lấn nhau.
+
 ### Về www
 
 Cả `tritdx.io.vn` và `www.tritdx.io.vn` đều gắn vào Pages và cùng phục vụ trang.
