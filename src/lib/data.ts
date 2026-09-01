@@ -37,9 +37,55 @@ export interface Project {
   summary: string
   did: string[]
   scale?: string
+  /** Dự án gồm nhiều app rời nhau — FMV có app người dùng, app thu ngân,
+   *  và game theo chiến dịch. Gộp thành một dòng là mô tả sai quy mô. */
+  parts?: { name: string; note: string }[]
 }
 
 export const WORK: Project[] = [
+  {
+    name: 'FMV',
+    client: 'Utop',
+    kind: 'Loyalty platform — three apps',
+    stack: ['React Native', 'React 19', 'TypeScript', 'Redux'],
+    summary:
+      'The largest thing I worked on: a rewards platform where members earn and spend points, and staff run the counter. Not one app but three, sharing one backend and one visual language.',
+    parts: [
+      {
+        name: 'Member app',
+        note: 'Points, history, challenges, vouchers, in-app commerce, store locator, QR scan, surveys, news — 1,155 source files',
+      },
+      {
+        name: 'Cashier app',
+        note: 'The staff side: orders, inventory, settings. Rebuilt in TypeScript on React Native 0.84',
+      },
+      {
+        name: 'Mid-Autumn campaign',
+        note: 'A seasonal lucky-box game shipped inside the app as a WebView — React 19, live prize and redemption APIs',
+      },
+    ],
+    did: [
+      'Feature work across the member app’s points and commerce surfaces',
+      'Built the cashier app’s order and inventory screens',
+      'Shipped the campaign game against a live prize backend, on a campaign deadline',
+      'Kept one visual language across three codebases and two React versions',
+    ],
+    scale: '3 apps · 1,155 + 115 + 24 source files',
+  },
+  {
+    name: 'CapitaOne',
+    client: 'Utop / CapitaLand',
+    kind: 'Flutter retail loyalty app',
+    stack: ['Flutter', 'Dio', 'flavors'],
+    summary:
+      'Mall loyalty app with separate UAT and production flavours — the codebase I know most intimately, and the one I test my own tools against.',
+    did: [
+      'Feature work across a mature Flutter codebase',
+      'Release flavours for UAT and production',
+      'Debug tooling for QA to inspect live traffic',
+    ],
+    scale: '237 Dart files · 42,483 lines',
+  },
   {
     name: 'HCM Metro HURC',
     client: 'Utop',
@@ -68,6 +114,21 @@ export const WORK: Project[] = [
     ],
   },
   {
+    name: 'BUV',
+    client: 'Utop / British University Vietnam',
+    kind: 'React Native student app',
+    stack: ['React Native', 'Redux', 'i18n'],
+    summary:
+      'Campus life in one app: attendance and academic progression, transcripts, a skills-point scheme, clubs and societies, events, library and schedules.',
+    did: [
+      'Attendance and academic-progression screens',
+      'Skills-point claims, history and transcript views',
+      'Clubs, societies and event attendance flows',
+      'Bilingual interface throughout',
+    ],
+    scale: '271 source files',
+  },
+  {
     name: 'MaisonOnline',
     client: 'Utop',
     kind: 'React Native commerce app, maintenance and upgrade',
@@ -82,21 +143,7 @@ export const WORK: Project[] = [
     scale: '1,038 source files',
   },
   {
-    name: 'CapitaOne',
-    client: 'Utop / CapitaLand',
-    kind: 'Flutter retail loyalty app',
-    stack: ['Flutter', 'Dio', 'flavors'],
-    summary:
-      'Mall loyalty app with separate UAT and production flavours — the codebase I know most intimately, and the one I test my own tools against.',
-    did: [
-      'Feature work across a mature Flutter codebase',
-      'Release flavours for UAT and production',
-      'Debug tooling for QA to inspect live traffic',
-    ],
-    scale: '237 Dart files · 42,483 lines',
-  },
-  {
-    name: 'Honda loyalty',
+    name: 'Honda Vietnam',
     client: 'Utop',
     kind: 'WebView SDK, React',
     stack: ['React', 'Framer Motion'],
@@ -106,19 +153,6 @@ export const WORK: Project[] = [
       'Motion design for the draw and reward states',
       'Consent and gift-history flows',
       'A bridge layer between web and native shell',
-    ],
-  },
-  {
-    name: 'Mid-Autumn game',
-    client: 'Utop',
-    kind: 'Mini-game in a WebView',
-    stack: ['React 19', 'Vite'],
-    summary:
-      'A seasonal lucky-box game with background music and a live prize backend — a small thing, built fast, played by real people during a campaign.',
-    did: [
-      'Game loop and reward animation',
-      'Prize, redemption and transaction APIs',
-      'Token handoff from the host app',
     ],
   },
 ]

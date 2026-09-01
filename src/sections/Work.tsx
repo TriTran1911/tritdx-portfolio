@@ -60,6 +60,18 @@ function Row({ p }: { p: Project }) {
           <div className="grid gap-6 pb-8 md:grid-cols-[38%_1fr] md:gap-8">
             <p className="text-muted text-sm leading-relaxed">{p.summary}</p>
             <div>
+              {/* Dự án gồm nhiều app thì liệt kê ra — gộp một dòng là nói sai
+                  quy mô, mà đây đúng là chỗ quy mô có ý nghĩa. */}
+              {p.parts && (
+                <ul className="mb-5 space-y-3">
+                  {p.parts.map(part => (
+                    <li key={part.name} className="border-l border-hairline pl-4">
+                      <p className="text-brass font-mono text-2xs">{part.name}</p>
+                      <p className="text-muted mt-0.5 text-sm leading-relaxed">{part.note}</p>
+                    </li>
+                  ))}
+                </ul>
+              )}
               <ul className="space-y-1.5 text-sm">
                 {p.did.map(d => (
                   <li key={d} className="flex gap-3">
