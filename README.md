@@ -24,6 +24,20 @@ Domain đã trỏ về Cloudflare, nên đường ít ma sát nhất là Cloudfl
 4. Sau khi deploy: tab **Custom domains** → thêm `tritdx.io.vn` và `www.tritdx.io.vn`.
    Cloudflare tự tạo bản ghi DNS, không phải thêm tay.
 
+### Về www
+
+Cả `tritdx.io.vn` và `www.tritdx.io.vn` đều gắn vào Pages và cùng phục vụ trang.
+Pages khớp `_redirects` **theo đường dẫn**, không theo host, nên không viết được
+luật chuyển hướng www ở đó — file `_redirects` với luật dạng URL đầy đủ là luật chết.
+
+Hiện dùng `<link rel="canonical">` trỏ về `tritdx.io.vn`, nên công cụ tìm kiếm chỉ
+ghi nhận một địa chỉ. Muốn 301 thật thì tạo Redirect Rule ở tầng zone:
+Cloudflare Dashboard → `tritdx.io.vn` → **Rules** → **Redirect Rules** → Create:
+- Field `Hostname` equals `www.tritdx.io.vn`
+- Target: `concat("https://tritdx.io.vn", http.request.uri.path)`, status 301
+
+Việc này cần quyền Zone Rulesets mà token hiện có không có, nên phải làm tay.
+
 **Đừng host trên máy cá nhân** như api·log. Công cụ nội bộ chỉ cần sống trong giờ
 làm; portfolio thì nhà tuyển dụng có thể mở lúc nửa đêm — máy ngủ là họ thấy trang lỗi.
 
