@@ -85,6 +85,7 @@ export function Contact() {
         </h2>
         <div className="mt-12 flex flex-wrap gap-x-12 gap-y-6">
           <Link label="Email" value={CONTACT.email} href={`mailto:${CONTACT.email}`} />
+          <Link label="GitHub" value={CONTACT.github} href={`https://${CONTACT.github}`} />
           <Link label="Phone" value={CONTACT.phone} href={`tel:${CONTACT.phone.replace(/\s/g, '')}`} />
           <div>
             <p className="eyebrow mb-1">Based in</p>

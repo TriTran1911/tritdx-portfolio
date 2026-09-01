@@ -226,6 +226,7 @@ export const EDUCATION = [
 ]
 
 export const CONTACT = {
+  github: 'github.com/TriTran1911',
   email: 'trandaoxuantricr123@gmail.com',
   phone: '+84 839 696 967',
   city: 'Ho Chi Minh City, Vietnam',

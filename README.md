@@ -1,5 +1,11 @@
 # Portfolio — tritdx.io.vn
 
+Đang chạy: **https://tritdx.io.vn** · Mã nguồn: **https://github.com/TriTran1911/tritdx-portfolio**
+
+Deploy bằng `npm run deploy` (Cloudflare Pages, direct upload). Chưa nối auto-deploy
+từ GitHub — muốn thì vào Cloudflare Dashboard → Workers & Pages → `tritdx-portfolio`
+→ Settings → Builds & deployments → Connect to Git.
+
 Trang cá nhân của Tri Tran Dao Xuan. React 19 + Vite + Tailwind v4 + GSAP.
 Nội dung bằng tiếng Anh; ghi chú trong code bằng tiếng Việt.
 
