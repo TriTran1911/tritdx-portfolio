@@ -25,7 +25,7 @@ export const ROLES: Role[] = [
     place: 'Remote',
     from: 'Jul 2024',
     to: 'Aug 2025',
-    note: 'Built order and invoice management for GreenOil — order creation, invoice generation, and the records screens behind them.',
+    note: 'Sole developer on GreenOil, a fuel distributor’s order and invoice system. Scoped, built and delivered it alongside full-time work.',
   },
 ]
 
@@ -141,6 +141,19 @@ export const WORK: Project[] = [
       'Kept the release train running through the upgrade',
     ],
     scale: '1,038 source files',
+  },
+  {
+    name: 'GreenOil',
+    client: 'Freelance',
+    kind: 'React Native — fuel order & invoice management',
+    stack: ['React Native'],
+    summary:
+      'My one freelance build: a system for a fuel distributor to raise orders, generate invoices against them, and keep the invoice records straight afterwards.',
+    did: [
+      'Order creation and invoice generation, end to end',
+      'Wired the order-processing and invoice APIs',
+      'Viewing, filtering and exporting invoice data',
+    ],
   },
   {
     name: 'Honda Vietnam',
