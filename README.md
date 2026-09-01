@@ -66,7 +66,11 @@ Bản dev mở `window.__gsap` để gỡ lỗi (`__gsap.globalTimeline.getChild
 | Nền | `#0C0D0F` graphite, không phải đen tuyệt đối |
 | Chữ | `#EDEAE3` bone — trắng ngà ấm, không phải trắng tinh |
 | Nhấn | `#C9A961` brass — **màu có sắc duy nhất** trên trang |
-| Cảnh báo | `#C4552F` rust, chỉ dùng cho mã lỗi trong sơ đồ |
+| Cảnh báo | `#D2694A` rust, chỉ dùng cho mã lỗi trong sơ đồ |
+
+Mọi màu chữ đã đo tương phản với nền và đạt WCAG AA: muted 6.8:1, faint 4.86:1,
+brass 8.64:1, bone 16.2:1, rust 5.43:1. Hai màu trong bản đầu không đạt
+(faint 3.0:1, rust 4.34:1) nên đã đổi.
 | Tiêu đề | Instrument Serif |
 | Thân | Inter Tight |
 | Dữ liệu | JetBrains Mono |

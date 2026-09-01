@@ -2,6 +2,9 @@
 
 /* ─────────────────────────────────────────────────────────────
    Graphite ground, bone text, brass as the only chroma.
+   Mọi màu chữ ở đây đã đo tương phản với --color-ground và đạt WCAG AA
+   (≥ 4.5:1): muted 6.8, faint 4.86, brass 8.64, bone 16.2, rust 5.43.
+   Bản đầu dùng #5C5E64 cho faint — chỉ 3.0:1, không đạt.
    Deliberately not the usual dev-portfolio near-black + acid
    green: the one hue shift is a warm metal, which pairs with the
    serif display and keeps data colours free for actual data.
@@ -12,10 +15,10 @@
   --color-surface-2: #1C1F25;
   --color-hairline:  #25282E;
   --color-bone:      #EDEAE3;
-  --color-muted:     #8C8B85;
-  --color-faint:     #5C5E64;
+  --color-muted:     #9A9992;
+  --color-faint:     #7D7F86;
   --color-brass:     #C9A961;
-  --color-rust:      #C4552F;
+  --color-rust:      #D2694A;
 
   --font-display: 'Instrument Serif', ui-serif, Georgia, serif;
   --font-sans: 'Inter Tight', system-ui, -apple-system, sans-serif;
