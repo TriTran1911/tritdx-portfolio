@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect width="64" height="64" rx="12" fill="#0C0D0F"/>
+  <!-- Chu T dang serif: net ngang co chan, net doc thon o giua -->
+  <path d="M14 18h36v5.5H36.8v25.3c0 1.4.6 2.1 2.4 2.4l3.3.5V54H21.5v-2.3l3.3-.5c1.8-.3 2.4-1 2.4-2.4V23.5H14V18z"
+        fill="#C9A961"/>
+</svg>

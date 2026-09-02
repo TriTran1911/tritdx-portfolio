@@ -16,7 +16,14 @@ export function App() {
   return (
     <>
       <div className="grain" aria-hidden />
-      <main className="mx-auto max-w-[1400px]">
+      {/* Chỉ hiện khi được focus bằng bàn phím — không chiếm chỗ khi dùng chuột. */}
+      <a href="#work"
+         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60]
+                    focus:rounded-sm focus:bg-brass focus:px-3 focus:py-2 focus:font-mono
+                    focus:text-sm focus:text-ground">
+        Skip to work
+      </a>
+      <main id="main" className="mx-auto max-w-[1400px]">
         <Hero />
         <Work />
         <Flow />

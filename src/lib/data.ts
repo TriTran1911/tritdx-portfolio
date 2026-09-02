@@ -173,7 +173,7 @@ export const WORK: Project[] = [
 export const BUILDS: Project[] = [
   {
     name: 'api·log',
-    client: 'Built and run by me',
+    client: 'Mine — built and running',
     kind: 'Reverse proxy that records API traffic, plus a mock server',
     stack: ['Bun', 'Hono', 'SQLite', 'React 19', 'Tailwind v4'],
     summary:
@@ -188,7 +188,7 @@ export const BUILDS: Project[] = [
   },
   {
     name: 'DMS',
-    client: 'Built by me',
+    client: 'Mine',
     kind: 'Distribution management back office',
     stack: ['NestJS', 'PostgreSQL 18', 'React', 'Ant Design'],
     summary:
@@ -227,6 +227,8 @@ export const EDUCATION = [
 
 export const CONTACT = {
   github: 'github.com/TriTran1911',
+  linkedin: 'linkedin.com/in/tri-tran-0833bb267',
+  cv: '/tri-tran-cv.pdf',
   email: 'trandaoxuantricr123@gmail.com',
   phone: '+84 839 696 967',
   city: 'Ho Chi Minh City, Vietnam',
