@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Tri Tran Dao Xuan — CV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&display=swap" />
+<style>
+  @font-face {
+    font-family: 'Instrument Serif';
+    font-style: normal; font-weight: 400;
+    src: url('../public/fonts/instrument-serif-latin.woff2') format('woff2');
+  }
+
+  @page { size: A4; margin: 13mm 14mm; }
+
+  :root {
+    --ink:      #16181c;   /* thân bài */
+    --ink-soft: #4a4f57;   /* mô tả, phụ chú */
+    --ink-faint:#7d838c;   /* stack, số liệu */
+    --rule:     #d6d9de;
+    --accent:   #7a5c2e;   /* đồng — cùng tông với trang web */
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body {
+    margin: 0;
+    font-family: 'Inter Tight', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 10pt;
+    line-height: 1.42;
+    color: var(--ink);
+    font-weight: 300;
+  }
+
+  /* ─────────── Đầu trang ─────────── */
+  header { margin-bottom: 9pt; }
+  h1 {
+    font-family: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+    font-weight: 400;
+    font-size: 30pt;
+    line-height: 1;
+    margin: 0 0 2pt;
+    letter-spacing: .2pt;
+  }
+  .role {
+    font-size: 9.6pt; font-weight: 500; color: var(--accent);
+    letter-spacing: .35pt; text-transform: uppercase;
+    margin: 0 0 5pt;
+  }
+  .contact { font-size: 8.5pt; color: var(--ink-soft); margin: 0; }
+  .contact span { white-space: nowrap; }
+  .sep { color: var(--rule); padding: 0 4pt; }
+
+  /* ─────────── Khối mục ─────────── */
+  section { margin-top: 13pt; }
+  h2 {
+    font-size: 7.6pt; font-weight: 600; letter-spacing: 1.1pt;
+    text-transform: uppercase; color: var(--accent);
+    margin: 0 0 5pt; padding-bottom: 2.5pt;
+    border-bottom: .6pt solid var(--rule);
+  }
+
+  p.profile { margin: 0; color: var(--ink-soft); max-width: 62em; }
+
+  /* ─────────── Kinh nghiệm ─────────── */
+  .job { margin-bottom: 7.5pt; break-inside: avoid; }
+  .job:last-child { margin-bottom: 0; }
+  .job-line {
+    display: flex; justify-content: space-between; align-items: baseline;
+    gap: 10pt;
+  }
+  .job-who { font-weight: 500; font-size: 9.6pt; }
+  .job-who em { font-style: normal; font-weight: 300; color: var(--ink-soft); }
+  .job-when {
+    font-size: 8.2pt; color: var(--ink-faint); white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+  .job-note { margin: 1.5pt 0 0; color: var(--ink-soft); }
+
+  /* ─────────── Dự án ─────────── */
+  .proj { margin-bottom: 8pt; break-inside: avoid; }
+  .proj:last-child { margin-bottom: 0; }
+  .proj-head {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 10pt;
+  }
+  .proj-name { font-weight: 500; font-size: 9.5pt; }
+  .proj-kind { font-weight: 300; color: var(--ink-soft); }
+  .proj-scale {
+    font-size: 8pt; color: var(--accent); white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+  .stack {
+    font-size: 8pt; color: var(--ink-faint); margin: .5pt 0 2pt;
+    letter-spacing: .1pt;
+  }
+  ul { margin: 0; padding: 0; list-style: none; }
+  li {
+    position: relative; padding-left: 9pt; color: var(--ink-soft);
+    margin-bottom: .8pt;
+  }
+  li::before {
+    content: ''; position: absolute; left: 0; top: .52em;
+    width: 4.5pt; height: .6pt; background: var(--accent); opacity: .75;
+  }
+  li b { font-weight: 500; color: var(--ink); }
+
+  /* ─────────── Kỹ năng ─────────── */
+  .skills { display: grid; grid-template-columns: 1fr 1fr; gap: 4pt 20pt; }
+  .skill-row { display: flex; gap: 6pt; }
+  .skill-key {
+    font-weight: 500; color: var(--ink); white-space: nowrap;
+    min-width: 68pt;
+  }
+  .skill-val { color: var(--ink-soft); }
+
+  /* ─────────── Học vấn ─────────── */
+  .edu { margin-bottom: 6pt; break-inside: avoid; }
+  .edu:last-child { margin-bottom: 0; }
+  .edu-line {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 10pt;
+  }
+  .edu-school { font-weight: 500; }
+  .edu-when {
+    font-size: 8.2pt; color: var(--ink-faint); white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+  .edu-detail { color: var(--ink-soft); margin: 0; }
+
+  footer {
+    margin-top: 10pt; padding-top: 4pt; border-top: .6pt solid var(--rule);
+    font-size: 8.2pt; color: var(--ink-faint);
+    display: flex; justify-content: space-between; gap: 10pt;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Tri Tran Dao Xuan</h1>
+  <p class="role">Mobile &amp; Frontend Developer</p>
+  <p class="contact">
+    <span>Ho Chi Minh City, Vietnam</span><span class="sep">·</span><span>+84 839 696 967</span><span class="sep">·</span><span>trandaoxuantricr123@gmail.com</span><br />
+    <span>tritdx.io.vn</span><span class="sep">·</span><span>github.com/TriTran1911</span><span class="sep">·</span><span>linkedin.com/in/tri-tran-0833bb267</span>
+  </p>
+</header>
+
+<section>
+  <h2>Profile</h2>
+  <p class="profile">
+    Flutter and React Native developer. Two and a half years at Utop (2023–2026) shipping production apps
+    for metro payments, life insurance and retail loyalty — including a three-app loyalty platform for
+    FamilyMart Vietnam. Owned App Store and Play submissions end to end, including diagnosing and clearing
+    rejections. Outside client work I design and run my own systems in TypeScript, NestJS and PostgreSQL.
+  </p>
+</section>
+
+<section>
+  <h2>Experience</h2>
+
+  <div class="job">
+    <div class="job-line">
+      <div class="job-who">Utop <em>— Mobile Developer</em></div>
+      <div class="job-when">Ho Chi Minh City · Sep 2023 – Mar 2026</div>
+    </div>
+    <p class="job-note">
+      Shipped Flutter and React Native apps for metro payments, life insurance and retail loyalty.
+      Owned end-to-end App Store and Play submissions, including diagnosing and clearing rejections.
+    </p>
+  </div>
+
+  <div class="job">
+    <div class="job-line">
+      <div class="job-who">Freelance <em>— React Native Developer</em></div>
+      <div class="job-when">Remote · Jul 2024 – Aug 2025</div>
+    </div>
+    <p class="job-note">
+      Sole developer on GreenOil, a fuel distributor’s order and invoice system. Scoped, built and
+      delivered it alongside full-time work.
+    </p>
+  </div>
+</section>
+
+<section>
+  <h2>Production work</h2>
+
+  <div class="proj">
+    <div class="proj-head">
+      <div class="proj-name">FamilyMart Vietnam <span class="proj-kind">— loyalty platform, three apps</span></div>
+      <div class="proj-scale">1,155 + 115 + 24 source files</div>
+    </div>
+    <p class="stack">React Native · React 19 · TypeScript · Redux</p>
+    <ul>
+      <li><b>Member app</b> — points, history, challenges, vouchers, in-app commerce, store locator, QR scan, surveys, news</li>
+      <li><b>Cashier app</b> — order and inventory screens, rebuilt in TypeScript on React Native 0.84</li>
+      <li><b>Mid-Autumn campaign</b> — a lucky-box game shipped inside the app as a React 19 WebView, against live prize and redemption APIs, on a campaign deadline</li>
+      <li>Kept one visual language across three codebases and two React versions</li>
+    </ul>
+  </div>
+
+  <div class="proj">
+    <div class="proj-head">
+      <div class="proj-name">CapitaOne <span class="proj-kind">— Flutter retail loyalty app</span></div>
+      <div class="proj-scale">237 Dart files · 42,483 lines</div>
+    </div>
+    <p class="stack">Flutter · Dio · build flavours</p>
+    <ul>
+      <li>Feature work across a mature Flutter codebase with separate UAT and production flavours</li>
+      <li>Built debug tooling that lets QA inspect live traffic</li>
+    </ul>
+  </div>
+
+  <div class="proj">
+    <div class="proj-head">
+      <div class="proj-name">HCM Metro HURC <span class="proj-kind">— Flutter SDK inside a third-party app</span></div>
+    </div>
+    <p class="stack">Flutter · REST · eKYC</p>
+    <ul>
+      <li>Payment and account-linking screens that drop into the metro operator’s own application</li>
+      <li>Implemented eKYC identity capture; wired payment and account APIs</li>
+      <li>Held UI parity with the existing web flow</li>
+    </ul>
+  </div>
+
+  <div class="proj">
+    <div class="proj-head">
+      <div class="proj-name">Shinhan Life Vietnam <span class="proj-kind">— loyalty CRM, mobile and web</span></div>
+    </div>
+    <p class="stack">Flutter · .NET MVC</p>
+    <ul>
+      <li>Points system embedded in an insurer’s main app — customers earn and redeem without a second login</li>
+      <li>Synchronised customer data across mobile and web; shipped the web-side SDK alongside the mobile build</li>
+    </ul>
+  </div>
+
+  <div class="proj">
+    <div class="proj-head">
+      <div class="proj-name">British University Vietnam <span class="proj-kind">— React Native student app</span></div>
+      <div class="proj-scale">271 source files</div>
+    </div>
+    <p class="stack">React Native · Redux · i18n</p>
+    <ul>
+      <li>Attendance and academic-progression screens; skills-point claims, history and transcript views</li>
+      <li>Clubs, societies and event attendance flows; bilingual interface throughout</li>
+    </ul>
+  </div>
+
+  <div class="proj">
+    <div class="proj-head">
+      <div class="proj-name">MaisonOnline <span class="proj-kind">— React Native commerce app, maintenance and upgrade</span></div>
+      <div class="proj-scale">1,038 source files</div>
+    </div>
+    <p class="stack">React Native · TypeScript</p>
+    <ul>
+      <li>Upgraded the React Native core across major versions without stopping the release train</li>
+      <li>Fixed and reshaped UI against real customer feedback</li>
+    </ul>
+  </div>
+
+  <div class="proj">
+    <div class="proj-head">
+      <div class="proj-name">Honda Vietnam <span class="proj-kind">— loyalty WebView SDK</span></div>
+    </div>
+    <p class="stack">React · Framer Motion</p>
+    <ul>
+      <li>Motion design for the lucky-draw and reward states; consent and gift-history flows</li>
+      <li>A bridge layer between the web surface and the native shell</li>
+    </ul>
+  </div>
+
+  <div class="proj">
+    <div class="proj-head">
+      <div class="proj-name">GreenOil <span class="proj-kind">— fuel order and invoice management (freelance)</span></div>
+    </div>
+    <p class="stack">React Native</p>
+    <ul>
+      <li>Sole developer: order creation and invoice generation, end to end</li>
+      <li>Wired the order-processing and invoice APIs; viewing, filtering and exporting invoice data</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>Own work — built and running</h2>
+
+  <div class="proj">
+    <div class="proj-head">
+      <div class="proj-name">api·log <span class="proj-kind">— reverse proxy that records API traffic, plus a mock server</span></div>
+      <div class="proj-scale">61-check end-to-end smoke test</div>
+    </div>
+    <p class="stack">Bun · Hono · SQLite · React 19 · Tailwind v4</p>
+    <ul>
+      <li>QA points the app at a proxy instead of the backend; request, response and timing are recorded with no backend change</li>
+      <li>Learns the shape of each endpoint’s response and reports when the backend quietly changes the contract</li>
+      <li>Hand-written ZIP, binary-plist and AndroidManifest parsers read <code>.ipa</code>/<code>.apk</code> with no dependencies — cross-checked against Apple’s and Google’s own tooling</li>
+      <li>Runs as a service behind Cloudflare Tunnel on my own machine</li>
+    </ul>
+  </div>
+
+  <div class="proj">
+    <div class="proj-head">
+      <div class="proj-name">DMS <span class="proj-kind">— distribution management back office</span></div>
+      <div class="proj-scale">53 tables · 17,600 lines</div>
+    </div>
+    <p class="stack">NestJS · PostgreSQL 18 · React · Ant Design</p>
+    <ul>
+      <li>Stock is the result of an append-only ledger, never a stored number — triggers block UPDATE and DELETE</li>
+      <li>Money posts through database functions in one transaction, never through a status flag</li>
+      <li>Prices, unit factors and tax rates are frozen onto document lines, so editing a price list cannot rewrite history</li>
+      <li>Idempotency keys on client submissions and on ledger writes</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>Skills</h2>
+  <div class="skills">
+    <div class="skill-row"><span class="skill-key">Mobile</span><span class="skill-val">Flutter, Dart, React Native, native release pipelines</span></div>
+    <div class="skill-row"><span class="skill-key">Frontend</span><span class="skill-val">React 19, TypeScript, Tailwind CSS v4, Vite, GSAP, Framer Motion</span></div>
+    <div class="skill-row"><span class="skill-key">Backend &amp; data</span><span class="skill-val">NestJS, Bun, Hono, PostgreSQL, SQLite, REST design</span></div>
+    <div class="skill-row"><span class="skill-key">Shipping</span><span class="skill-val">App Store &amp; Play submission, rejection triage, Cloudflare Tunnel, Git</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>Education</h2>
+  <div class="edu">
+    <div class="edu-line">
+      <div class="edu-school">VNUHCM — University of Science</div>
+      <div class="edu-when">Ho Chi Minh City · Villeurbanne · 2020 – 2023</div>
+    </div>
+    <p class="edu-detail">Bilingual BSc in Information Technology, with Université Claude Bernard Lyon 1</p>
+  </div>
+  <div class="edu">
+    <div class="edu-line">
+      <div class="edu-school">Kew High School</div>
+      <div class="edu-when">Melbourne, Australia · 2017 – 2019</div>
+    </div>
+    <p class="edu-detail">International student, computer science</p>
+  </div>
+</section>
+
+<footer>
+  <span>Languages — Vietnamese · English · French (beginner)</span>
+  <span>tritdx.io.vn</span>
+</footer>
+
+</body>
+</html>
