@@ -16,8 +16,8 @@ export const ROLES: Role[] = [
     title: 'Mobile Developer',
     place: 'Ho Chi Minh City',
     from: 'Sep 2023',
-    to: 'Mar 2026',
-    note: 'Shipped Flutter and React Native apps for metro payments, life insurance and retail loyalty. Owned end-to-end App Store and Play submissions, including diagnosing and clearing rejections.',
+    to: 'Present',
+    note: 'Ship Flutter and React Native apps for metro payments, life insurance and retail loyalty. Own end-to-end App Store and Play submissions, including diagnosing and clearing rejections.',
   },
   {
     company: 'Freelance',
