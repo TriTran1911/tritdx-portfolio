@@ -37,14 +37,14 @@ export interface Project {
   summary: string
   did: string[]
   scale?: string
-  /** Dự án gồm nhiều app rời nhau — FMV có app người dùng, app thu ngân,
+  /** Dự án gồm nhiều app rời nhau — FamilyMart Vietnam có app người dùng, app thu ngân,
    *  và game theo chiến dịch. Gộp thành một dòng là mô tả sai quy mô. */
   parts?: { name: string; note: string }[]
 }
 
 export const WORK: Project[] = [
   {
-    name: 'FMV',
+    name: 'FamilyMart Vietnam',
     client: 'Utop',
     kind: 'Loyalty platform — three apps',
     stack: ['React Native', 'React 19', 'TypeScript', 'Redux'],
@@ -114,7 +114,7 @@ export const WORK: Project[] = [
     ],
   },
   {
-    name: 'BUV',
+    name: 'British University Vietnam',
     client: 'Utop / British University Vietnam',
     kind: 'React Native student app',
     stack: ['React Native', 'Redux', 'i18n'],
