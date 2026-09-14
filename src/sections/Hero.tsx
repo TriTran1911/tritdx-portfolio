@@ -30,10 +30,10 @@ export function Hero() {
     })
   }, [])
 
+  // Căn giữa trong khung cao 86svh chỉ hợp khi hero là thứ đầu tiên trên màn
+  // hình. Trên điện thoại nó nằm dưới khối danh tính, nên căn giữa chỉ tạo ra
+  // một khoảng trống rồi đẩy tiêu đề xuống thấp hơn nữa.
   return (
-    {/* Căn giữa trong khung cao 86svh chỉ hợp khi hero là thứ đầu tiên trên màn
-        hình. Trên điện thoại nó nằm dưới khối danh tính, nên căn giữa chỉ tạo
-        ra một khoảng trống rồi đẩy tiêu đề xuống thấp hơn nữa. */}
     <header className="flex flex-col px-6 pb-16 pt-8 md:px-12
                        lg:min-h-[86svh] lg:justify-center lg:py-20">
       <p data-hero-line className="eyebrow mb-6">
