@@ -1,10 +1,13 @@
-import { useState } from 'react'
-import { ABOUT, CONTACT, FOCUS } from '../lib/data.ts'
+import { useEffect, useState } from 'react'
+import { ABOUT, CONTACT, EDUCATION, FOCUS, SKILLS } from '../lib/data.ts'
 
-/* Cột trái dính cố định: danh tính và đường liên hệ luôn nằm trong tầm mắt,
-   người xem không phải cuộn ngược lên đầu để tìm cách liên lạc.
-   Dưới lg thì nó xếp thành một khối thường ở đầu trang — cột dính trên màn
-   hình cao chưa tới 700px sẽ ăn hết chỗ đọc. */
+/* Cột trái dính cố định: danh tính, đường liên hệ và mọi thông tin nền —
+   kỹ năng, học vấn, ngôn ngữ. Cột phải chỉ còn dự án, đúng cách một CV
+   bài bản chia: ai / làm được gì ở bên này, đã làm gì ở bên kia.
+
+   Dưới lg thì nó xếp thành khối thường ở đầu trang. Vì giờ cột này dài hơn
+   nhiều, các mục phụ thu lại thành <details> trên điện thoại — không thì
+   phần giới thiệu bị đẩy quá xa xuống dưới. */
 export function Sidebar() {
   return (
     <aside className="border-hairline lg:sticky lg:top-0 lg:h-svh lg:self-start lg:border-r">
@@ -12,14 +15,14 @@ export function Sidebar() {
                       px-6 pb-10 pt-10 md:px-10 lg:px-8 lg:pb-8">
         <Identity />
 
-        {/* Mục lục chỉ có ích khi cột trái dính một chỗ. Trên điện thoại nó là
-            một khối 170px đẩy câu tuyên bố xuống dưới màn hình đầu tiên. */}
+        {/* Mục lục chỉ có ích khi cột trái dính một chỗ. Trên điện thoại nó chỉ
+            đẩy nội dung xuống. */}
         <nav className="mt-8 hidden lg:block" aria-label="Sections">
           <ul className="space-y-0.5">
-            <NavLink href="#work" n="01" label="Production work" />
-            <NavLink href="#builds" n="03" label="Things I built" />
-            <NavLink href="#background" n="05" label="Background" />
-            <NavLink href="#contact" n="06" label="Get in touch" />
+            <NavLink href="#experience" n="01" label="Experience" />
+            <NavLink href="#work" n="02" label="Production work" />
+            <NavLink href="#flow" n="03" label="How api·log works" />
+            <NavLink href="#builds" n="04" label="Things I built" />
           </ul>
         </nav>
 
@@ -28,8 +31,7 @@ export function Sidebar() {
           <p className="text-muted max-w-[46ch] text-sm leading-relaxed">{ABOUT}</p>
         </div>
 
-        <div className="hairline-t mt-6 pt-6">
-          <p className="eyebrow mb-3">Focus</p>
+        <Panel title="Focus">
           <ul className="space-y-2">
             {FOCUS.map(f => (
               <li key={f} className="text-muted flex gap-2.5 text-sm leading-snug">
@@ -38,13 +40,83 @@ export function Sidebar() {
               </li>
             ))}
           </ul>
-        </div>
+        </Panel>
+
+        <Panel title="Skills">
+          <div className="space-y-3">
+            {SKILLS.map(g => (
+              <div key={g.group}>
+                <p className="text-brass font-mono text-2xs">{g.group}</p>
+                <p className="text-muted mt-0.5 text-sm leading-snug">{g.items.join(', ')}</p>
+              </div>
+            ))}
+          </div>
+        </Panel>
+
+        <Panel title="Education">
+          <div className="space-y-3">
+            {EDUCATION.map(e => (
+              <div key={e.school}>
+                <p className="text-sm leading-snug">{e.school}</p>
+                <p className="text-muted mt-0.5 text-sm leading-snug">{e.detail}</p>
+                <p className="text-faint tnum mt-0.5 font-mono text-2xs">
+                  {e.place} · {e.years}
+                </p>
+              </div>
+            ))}
+          </div>
+        </Panel>
+
+        <Panel title="Languages">
+          <p className="text-muted text-sm">{CONTACT.languages}</p>
+        </Panel>
 
         <p className="text-faint mt-auto hidden pt-8 font-mono text-2xs lg:block">
           {CONTACT.city}
         </p>
       </div>
     </aside>
+  )
+}
+
+/** Từ lg trở lên cột đủ dài để mở sẵn tất cả; dưới lg thì gập lại.
+ *  Dựng hai nhánh riêng thay vì điều khiển thuộc tính `open`: <details> có
+ *  trạng thái riêng của trình duyệt, ép `open` từ React sẽ chặn người dùng
+ *  tự đóng mở. */
+function Panel({ title, children }: { title: string; children: React.ReactNode }) {
+  const [desktop, setDesktop] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia('(min-width: 1024px)').matches,
+  )
+
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 1024px)')
+    const on = () => setDesktop(mq.matches)
+    mq.addEventListener('change', on)
+    return () => mq.removeEventListener('change', on)
+  }, [])
+
+  if (desktop) {
+    return (
+      <div className="hairline-t mt-6 pt-6">
+        <p className="eyebrow mb-3">{title}</p>
+        {children}
+      </div>
+    )
+  }
+
+  return (
+    <details className="hairline-t group mt-5 pt-5">
+      <summary className="eyebrow flex cursor-pointer list-none items-center justify-between
+                          [&::-webkit-details-marker]:hidden">
+        {title}
+        <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor"
+             strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden
+             className="transition-transform duration-200 group-open:rotate-180">
+          <path d="m4 6 4 4 4-4" />
+        </svg>
+      </summary>
+      <div className="mt-3">{children}</div>
+    </details>
   )
 }
 
@@ -90,7 +162,9 @@ function Identity() {
       </div>
 
       <div className="mt-5 flex flex-wrap gap-2">
-        <a href="#contact"
+        {/* Trỏ thẳng vào mail: mục "get in touch" ở cột phải đã bỏ, neo #contact
+            không còn tồn tại. */}
+        <a href={`mailto:${CONTACT.email}`}
            className="bg-brass text-ground rounded-sm px-3.5 py-2 font-mono text-2xs
                       transition-opacity duration-200 hover:opacity-85">
           Get in touch
@@ -111,10 +185,6 @@ function Identity() {
    kia là ảnh im lặng không hiện, mà lỗi đó rất khó đoán ra. */
 const SOURCES = ['/portrait.jpg', '/portrait.png']
 
-/* object-[center_28%]: ảnh thẻ là ảnh dọc, mặt nằm ở phần trên khung. Cắt tròn
-   căn giữa sẽ ra cằm và ngực. Nếu thay bằng ảnh đã cắt vuông thì đổi lại
-   object-center. */
-
 function Portrait() {
   const [i, setI] = useState(0)
   return (
@@ -122,8 +192,7 @@ function Portrait() {
                     border ring-1 ring-offset-2 ring-offset-ground">
       {i < SOURCES.length ? (
         <img src={SOURCES[i]} alt="Tri Tran" width={80} height={80}
-             className="h-full w-full object-cover object-[center_28%]"
-             onError={() => setI(n => n + 1)} />
+             className="h-full w-full object-cover" onError={() => setI(n => n + 1)} />
       ) : (
         <div className="bg-surface font-display text-muted flex h-full w-full items-center
                         justify-center text-2xl leading-none">

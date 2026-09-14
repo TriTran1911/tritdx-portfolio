@@ -13,7 +13,7 @@ export function Work() {
 
   return (
     <section id="work" className="px-6 py-24 md:px-12">
-      <SectionHead num="01" title="Production work" note="Utop · since 2023" />
+      <SectionHead num="02" title="Production work" note="Utop · since 2023" />
       <div ref={list} className="hairline-t">
         {WORK.map(p => <Row key={p.name} p={p} />)}
       </div>

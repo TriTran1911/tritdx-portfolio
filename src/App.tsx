@@ -4,7 +4,7 @@ import { Hero } from './sections/Hero.tsx'
 import { Work } from './sections/Work.tsx'
 import { Flow } from './sections/Flow.tsx'
 import { Builds } from './sections/Builds.tsx'
-import { Background, Contact, Craft, Footer } from './sections/Rest.tsx'
+import { Experience, Footer } from './sections/Rest.tsx'
 import { Sidebar } from './sections/Sidebar.tsx'
 
 export function App() {
@@ -18,11 +18,11 @@ export function App() {
     <>
       <div className="grain" aria-hidden />
       {/* Chỉ hiện khi được focus bằng bàn phím — không chiếm chỗ khi dùng chuột. */}
-      <a href="#work"
+      <a href="#experience"
          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60]
                     focus:rounded-sm focus:bg-brass focus:px-3 focus:py-2 focus:font-mono
                     focus:text-sm focus:text-ground">
-        Skip to work
+        Skip to content
       </a>
       {/* Hai cột từ lg trở lên: trái là danh tính dính cố định, phải là nội dung
           cuộn. Dưới lg thì cột trái xếp lên trên như một khối thường. */}
@@ -30,12 +30,10 @@ export function App() {
         <Sidebar />
         <main id="main" className="min-w-0">
           <Hero />
+          <Experience />
           <Work />
           <Flow />
           <Builds />
-          <Craft />
-          <Background />
-          <Contact />
           <Footer />
         </main>
       </div>

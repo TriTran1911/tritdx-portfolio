@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { gsap, motionSafe } from '../lib/motion.ts'
+import { gsap, motionSafe, ScrollTrigger } from '../lib/motion.ts'
 
 /* Phần duy nhất được ghim lại khi cuộn.
  *
@@ -16,16 +16,12 @@ export function Flow() {
 
     return motionSafe(
       () => {
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: el,
-            start: 'top top',
-            end: '+=220%',
-            scrub: 1,
-            pin: true,
-            anticipatePin: 1,
-          },
-        })
+        // Timeline tự chạy tay chứ không dùng scrub. Scrub buộc tiến trình bám
+        // sát vị trí cuộn theo CẢ HAI chiều, nên cuộn ngược lên là gói tin chạy
+        // giật lùi về app và các dòng log biến mất — trông như lỗi render.
+        // Ở đây chỉ cho tiến trình tăng: cuộn xuống thì chạy, cuộn lên giữ yên.
+        const tl = gsap.timeline({ paused: true })
+        let reached = 0
 
         tl.from('[data-node]', { opacity: 0, y: 18, duration: 0.4, stagger: 0.12 })
 
@@ -39,7 +35,21 @@ export function Flow() {
           .from('[data-logrow]', { opacity: 0, x: -14, duration: 0.4, stagger: 0.18 }, '-=0.3')
           .from('[data-caption]', { opacity: 0, y: 10, duration: 0.5 }, '-=0.4')
 
-        return () => tl.kill()
+        const st = ScrollTrigger.create({
+          trigger: el,
+          start: 'top top',
+          end: '+=220%',
+          pin: true,
+          anticipatePin: 1,
+          onUpdate: self => {
+            if (self.progress > reached) {
+              reached = self.progress
+              tl.progress(reached)
+            }
+          },
+        })
+
+        return () => { st.kill(); tl.kill() }
       },
       () => {
         // Giảm chuyển động: hiện luôn trạng thái cuối, không ghim, không cuộn giả.
@@ -50,8 +60,8 @@ export function Flow() {
   }, [])
 
   return (
-    <div ref={root} className="flex min-h-svh flex-col justify-center px-6 py-24 md:px-12">
-      <p className="eyebrow mb-8">02 — how api·log works</p>
+    <div ref={root} id="flow" className="flex min-h-svh flex-col justify-center px-6 py-24 md:px-12">
+      <p className="eyebrow mb-8">03 — how api·log works</p>
 
       <div className="overflow-x-auto">
         <svg viewBox="0 0 640 260" className="block h-auto w-full min-w-[560px]"

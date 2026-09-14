@@ -6,7 +6,7 @@ import { SectionHead } from './Work.tsx'
 export function Builds() {
   return (
     <section id="builds" className="px-6 py-24 md:px-12">
-      <SectionHead num="03" title="Things I built for myself" note="2026" />
+      <SectionHead num="04" title="Things I built for myself" note="2026" />
       <p className="text-muted mb-12 max-w-[62ch] text-sm leading-relaxed">
         Client work shows what I can be asked to do. These show what I do when nobody
         asks — and they are where the harder engineering is.
