@@ -234,3 +234,28 @@ export const CONTACT = {
   city: 'Ho Chi Minh City, Vietnam',
   languages: 'Vietnamese · English · French (beginner)',
 }
+
+/* ─── Cột trái và dải số liệu ────────────────────────────────────────────
+   Mọi con số dưới đây đã có sẵn ở WORK/BUILDS phía trên, chỉ là đang nằm
+   trong hàng phải bấm mới mở. Đưa lên đầu trang để người quét thấy ngay.
+   Sửa số ở trên thì sửa cả ở đây. */
+
+export const ABOUT =
+  'Flutter and React Native developer, at Utop since 2023. Metro fares, insurance ' +
+  'points, mall loyalty — the apps people actually pay through. I own App Store and ' +
+  'Play releases end to end, rejections included. Outside client work I build the ' +
+  'tools I need myself.'
+
+export const FOCUS: string[] = [
+  'Production mobile apps — Flutter, React Native',
+  'App Store & Play release, rejection triage',
+  'Frontend systems in React 19 and TypeScript',
+  'Data modelling when the tool calls for it',
+]
+
+export const STATS: { value: string; note: string }[] = [
+  { value: '3 apps · 1,294 files', note: 'FamilyMart Vietnam platform' },
+  { value: '42,483 lines', note: 'CapitaOne Flutter codebase' },
+  { value: '53 tables', note: 'DMS append-only ledger' },
+  { value: '8 production apps', note: 'shipped since 2023' },
+]

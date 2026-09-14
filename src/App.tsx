@@ -5,6 +5,7 @@ import { Work } from './sections/Work.tsx'
 import { Flow } from './sections/Flow.tsx'
 import { Builds } from './sections/Builds.tsx'
 import { Background, Contact, Craft, Footer } from './sections/Rest.tsx'
+import { Sidebar } from './sections/Sidebar.tsx'
 
 export function App() {
   useEffect(() => {
@@ -23,16 +24,21 @@ export function App() {
                     focus:text-sm focus:text-ground">
         Skip to work
       </a>
-      <main id="main" className="mx-auto max-w-[1400px]">
-        <Hero />
-        <Work />
-        <Flow />
-        <Builds />
-        <Craft />
-        <Background />
-        <Contact />
-        <Footer />
-      </main>
+      {/* Hai cột từ lg trở lên: trái là danh tính dính cố định, phải là nội dung
+          cuộn. Dưới lg thì cột trái xếp lên trên như một khối thường. */}
+      <div className="mx-auto max-w-[1500px] lg:grid lg:grid-cols-[minmax(280px,330px)_1fr]">
+        <Sidebar />
+        <main id="main" className="min-w-0">
+          <Hero />
+          <Work />
+          <Flow />
+          <Builds />
+          <Craft />
+          <Background />
+          <Contact />
+          <Footer />
+        </main>
+      </div>
     </>
   )
 }

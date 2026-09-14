@@ -35,21 +35,27 @@ export function Craft() {
 export function Background() {
   const list = useReveal<HTMLDivElement>()
   return (
-    <section className="px-6 py-24 md:px-12">
+    <section id="background" className="px-6 py-24 md:px-12">
       <SectionHead num="05" title="Background" />
       <div ref={list} className="grid gap-10 lg:grid-cols-2">
         <div>
           <p className="eyebrow mb-5">Experience</p>
-          {ROLES.map(r => (
-            <div key={r.company} className="hairline-t py-5">
-              <div className="flex flex-wrap items-baseline justify-between gap-2">
-                <h3 className="font-display text-2xl leading-none">{r.company}</h3>
-                <p className="tnum font-mono text-2xs text-faint">{r.from} — {r.to}</p>
-              </div>
-              <p className="text-brass mt-1 text-sm">{r.title} · {r.place}</p>
-              <p className="text-muted mt-2 max-w-[54ch] text-sm leading-relaxed">{r.note}</p>
-            </div>
-          ))}
+          {/* Dòng thời gian: đường dọc chạy suốt, mỗi mốc một chấm. Đường kẻ nằm
+              ở ::before của khối bao nên không cần thẻ rỗng chỉ để vẽ. */}
+          <ol className="relative before:absolute before:bottom-2 before:left-[3px] before:top-2
+                         before:w-px before:bg-hairline">
+            {ROLES.map(r => (
+              <li key={r.company} className="relative pb-8 pl-7 last:pb-0">
+                <span aria-hidden
+                      className="border-brass bg-ground absolute left-0 top-[7px] h-[7px] w-[7px]
+                                 rounded-full border" />
+                <p className="tnum text-faint font-mono text-2xs">{r.from} — {r.to}</p>
+                <h3 className="font-display mt-1.5 text-2xl leading-none">{r.company}</h3>
+                <p className="text-brass mt-1 text-sm">{r.title} · {r.place}</p>
+                <p className="text-muted mt-2 max-w-[54ch] text-sm leading-relaxed">{r.note}</p>
+              </li>
+            ))}
+          </ol>
         </div>
 
         <div>

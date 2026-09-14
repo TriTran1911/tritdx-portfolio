@@ -3,8 +3,8 @@
   "configurations": [
     {
       "name": "portfolio",
-      "runtimeExecutable": "node_modules/.bin/vite",
-      "runtimeArgs": ["--port", "5180", "--strictPort"],
+      "runtimeExecutable": "/Users/trantri/development/portfolio/node_modules/.bin/vite",
+      "runtimeArgs": ["--root", "/Users/trantri/development/portfolio", "--port", "5180", "--strictPort"],
       "port": 5180
     }
   ]
