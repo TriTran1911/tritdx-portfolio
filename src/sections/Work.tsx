@@ -91,10 +91,38 @@ function Row({ p }: { p: Project }) {
                 {p.stack.map(s => <span key={s} className="text-faint">{s}</span>)}
                 {p.scale && <span className="text-brass tnum">{p.scale}</span>}
               </p>
+
+              {/* Link store nằm trong phần mở ra chứ không nằm trên hàng tiêu đề:
+                  hàng đó là một <button>, lồng <a> vào trong là HTML sai và làm
+                  hỏng điều hướng bàn phím. */}
+              {p.links && (
+                <p className="mt-4 flex flex-wrap gap-2">
+                  {p.links.ios && <StoreLink href={p.links.ios} store="App Store" />}
+                  {p.links.android && <StoreLink href={p.links.android} store="Google Play" />}
+                </p>
+              )}
             </div>
           </div>
         </div>
       </div>
     </div>
+  )
+}
+
+/* Nút tải: đích ngoài miền nên mở tab mới kèm rel=noreferrer. Nhãn ghi rõ tên
+   kho chứ không chỉ có biểu tượng — biểu tượng đứng một mình thì trình đọc màn
+   hình không đọc ra được gì. */
+function StoreLink({ href, store }: { href: string; store: string }) {
+  return (
+    <a href={href} target="_blank" rel="noreferrer"
+       className="border-hairline text-muted inline-flex items-center gap-2 rounded-sm border
+                  px-3 py-1.5 font-mono text-2xs transition-colors duration-200
+                  hover:border-brass hover:text-bone">
+      <svg viewBox="0 0 16 16" width="11" height="11" fill="none" stroke="currentColor"
+           strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+        <path d="M8 2v8m0 0 3-3m-3 3L5 7M2.5 11.5v1a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-1" />
+      </svg>
+      {store}
+    </a>
   )
 }

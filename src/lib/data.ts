@@ -37,6 +37,10 @@ export interface Project {
    *  chính repo. Đây là dòng nhà tuyển dụng quét đầu tiên khi lọc theo nền
    *  tảng, nên để riêng chứ không trộn vào stack. */
   runtime?: string
+  /** Chỉ điền khi đã mở đúng trang store và thấy đúng tên app. App nội bộ
+   *  (app thu ngân) và SDK nhúng vào app của bên khác thì không có link — để
+   *  trống chứ không trỏ sang app gần giống. */
+  links?: { ios?: string; android?: string }
   stack: string[]
   summary: string
   did: string[]
@@ -49,6 +53,10 @@ export interface Project {
 export const WORK: Project[] = [
   {
     name: 'FamilyMart Vietnam',
+    links: {
+      ios: 'https://apps.apple.com/vn/app/familymart-vietnam/id1435763343',
+      android: 'https://play.google.com/store/apps/details?id=jp.co.toshiba.famipoint.membership.mobile.android',
+    },
     client: 'Utop',
     kind: 'Loyalty platform — three apps',
     runtime: 'React Native 0.79 + 0.84 · React 19',
@@ -79,6 +87,10 @@ export const WORK: Project[] = [
   },
   {
     name: 'CapitaOne',
+    links: {
+      ios: 'https://apps.apple.com/vn/app/capitaone/id6765926050',
+      android: 'https://play.google.com/store/apps/details?id=com.cldmobileapp',
+    },
     client: 'Utop / CapitaLand',
     kind: 'Flutter retail loyalty app',
     runtime: 'Flutter · Dart SDK 3.11',
@@ -125,6 +137,10 @@ export const WORK: Project[] = [
   },
   {
     name: 'British University Vietnam',
+    links: {
+      ios: 'https://apps.apple.com/vn/app/buv-campus-central/id6748009347',
+      android: 'https://play.google.com/store/apps/details?id=com.akc.buv.prod',
+    },
     client: 'Utop / British University Vietnam',
     kind: 'React Native student app',
     runtime: 'React Native 0.79 · React 19',
@@ -141,6 +157,10 @@ export const WORK: Project[] = [
   },
   {
     name: 'MaisonOnline',
+    links: {
+      ios: 'https://apps.apple.com/vn/app/maison-online/id1565132130',
+      android: 'https://play.google.com/store/apps/details?id=com.maisonjsc.online',
+    },
     client: 'Utop',
     kind: 'React Native commerce app, maintenance and upgrade',
     runtime: 'React Native 0.79 · React 19',
