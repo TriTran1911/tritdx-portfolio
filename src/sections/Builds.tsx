@@ -66,6 +66,18 @@ function Card({ p }: { p: Project }) {
         {p.stack.map(s => <span key={s} className="text-faint">{s}</span>)}
       </p>
       {p.scale && <p className="text-brass tnum mt-2 font-mono text-2xs">{p.scale}</p>}
+
+      {p.repo && (
+        <a href={p.repo} target="_blank" rel="noreferrer"
+           className="border-hairline text-muted relative z-10 mt-5 inline-flex items-center gap-2
+                      rounded-sm border px-3 py-1.5 font-mono text-2xs transition-colors
+                      duration-200 hover:border-brass hover:text-bone">
+          <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden>
+            <path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3Z" />
+          </svg>
+          Source on GitHub
+        </a>
+      )}
     </article>
   )
 }

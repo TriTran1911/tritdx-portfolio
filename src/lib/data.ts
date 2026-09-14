@@ -41,6 +41,9 @@ export interface Project {
    *  (app thu ngân) và SDK nhúng vào app của bên khác thì không có link — để
    *  trống chứ không trỏ sang app gần giống. */
   links?: { ios?: string; android?: string }
+  /** Mã nguồn mở công khai. Chỉ điền khi repo thật sự public — link tới repo
+   *  private thì người xem bấm vào chỉ thấy trang 404. */
+  repo?: string
   stack: string[]
   summary: string
   did: string[]
@@ -210,6 +213,7 @@ export const BUILDS: Project[] = [
   {
     name: 'api·log',
     client: 'Mine — built and running',
+    repo: 'https://github.com/TriTran1911/api-log',
     kind: 'Reverse proxy that records API traffic, plus a mock server',
     stack: ['Bun', 'Hono', 'SQLite', 'React 19', 'Tailwind v4'],
     summary:
