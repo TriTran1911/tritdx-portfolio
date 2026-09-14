@@ -48,7 +48,7 @@ export function Hero() {
               607px trong cột 816px, chữ to hơn lấp được chỗ đó bằng chính nó
               thay vì phải độn thêm nội dung. */}
           <h1 ref={head}
-              className="font-display max-w-[15ch] text-[clamp(2.5rem,6.8vw,7rem)]
+              className="font-display max-w-[15ch] text-[clamp(2.5rem,6.5vw,5.5rem)]
                          leading-[0.95] tracking-[-0.02em]">
             I build the apps people actually pay with.
           </h1>

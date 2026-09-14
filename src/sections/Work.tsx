@@ -42,9 +42,16 @@ function Row({ p }: { p: Project }) {
       <button onClick={() => setOpen(o => !o)} aria-expanded={open}
               className="flex w-full cursor-pointer flex-col gap-1 py-6 text-left
                          transition-colors duration-300 md:flex-row md:items-baseline md:gap-8">
-        <span className="font-display w-full text-2xl leading-tight transition-transform
-                         duration-300 group-hover:translate-x-1 md:w-[38%] md:text-3xl">
-          {p.name}
+        <span className="w-full md:w-[38%]">
+          <span className="font-display block text-2xl leading-tight transition-transform
+                           duration-300 group-hover:translate-x-1 md:text-3xl">
+            {p.name}
+          </span>
+          {/* Nền tảng và phiên bản hiện ngay khi danh sách còn đóng: người lọc
+              hồ sơ theo nền tảng không phải mở từng mục ra mới biết. */}
+          {p.runtime && (
+            <span className="text-faint mt-1 block font-mono text-2xs">{p.runtime}</span>
+          )}
         </span>
         <span className="text-muted flex-1 text-sm">{p.kind}</span>
         <span className="eyebrow shrink-0">

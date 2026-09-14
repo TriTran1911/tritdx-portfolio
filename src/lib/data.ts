@@ -33,6 +33,10 @@ export interface Project {
   name: string
   client: string
   kind: string
+  /** Nền tảng và phiên bản chạy thật, đọc từ package.json / pubspec.yaml của
+   *  chính repo. Đây là dòng nhà tuyển dụng quét đầu tiên khi lọc theo nền
+   *  tảng, nên để riêng chứ không trộn vào stack. */
+  runtime?: string
   stack: string[]
   summary: string
   did: string[]
@@ -47,42 +51,46 @@ export const WORK: Project[] = [
     name: 'FamilyMart Vietnam',
     client: 'Utop',
     kind: 'Loyalty platform — three apps',
-    stack: ['React Native', 'React 19', 'TypeScript', 'Redux'],
+    runtime: 'React Native 0.79 + 0.84 · React 19',
+    stack: ['React Native', 'React 19', 'TypeScript', 'Redux Saga', 'TanStack Query', 'Firebase'],
     summary:
       'The largest thing I worked on: a rewards platform where members earn and spend points, and staff run the counter. Not one app but three, sharing one backend and one visual language.',
     parts: [
       {
-        name: 'Member app',
-        note: 'Points, history, challenges, vouchers, in-app commerce, store locator, QR scan, surveys, news — 1,155 source files',
+        name: 'Member app · React Native 0.79.3',
+        note: 'Points, vouchers, in-app commerce, store locator, QR scan, surveys. Redux Saga, Firebase analytics/crashlytics/performance, biometric unlock through Keychain, maps, i18n — 1,066 files, 106,087 lines',
       },
       {
-        name: 'Cashier app',
-        note: 'The staff side: orders, inventory, settings. Rebuilt in TypeScript on React Native 0.84',
+        name: 'Cashier app · React Native 0.84.1, New Architecture',
+        note: 'Rebuilt from scratch: 94 of 94 files TypeScript, newArchEnabled=true, TanStack Query instead of Redux. The one codebase here running Fabric and TurboModules — 13,879 lines',
       },
       {
-        name: 'Mid-Autumn campaign',
-        note: 'A seasonal lucky-box game shipped inside the app as a WebView — React 19, live prize and redemption APIs',
+        name: 'Mid-Autumn campaign · React 19.2',
+        note: 'A seasonal lucky-box game shipped inside the app as a WebView, fully TypeScript, against live prize and redemption APIs — 22 files, 1,882 lines',
       },
     ],
     did: [
       'Feature work across the member app’s points and commerce surfaces',
-      'Built the cashier app’s order and inventory screens',
+      'Rebuilt the cashier app on React Native’s New Architecture, in TypeScript throughout',
       'Shipped the campaign game against a live prize backend, on a campaign deadline',
       'Kept one visual language across three codebases and two React versions',
     ],
-    scale: '3 apps · 1,155 + 115 + 24 source files',
+    scale: '3 apps · 1,182 files · 121,848 lines',
   },
   {
     name: 'CapitaOne',
     client: 'Utop / CapitaLand',
     kind: 'Flutter retail loyalty app',
-    stack: ['Flutter', 'Dio', 'flavors'],
+    runtime: 'Flutter · Dart SDK 3.11',
+    stack: ['Flutter', 'Riverpod', 'go_router', 'Dio', 'Firebase', 'flavors'],
     summary:
       'Mall loyalty app with separate UAT and production flavours — the codebase I know most intimately, and the one I test my own tools against.',
     did: [
-      'Feature work across a mature Flutter codebase',
-      'Release flavours for UAT and production',
-      'Debug tooling for QA to inspect live traffic',
+      'Riverpod for state, go_router for navigation, Dio for the API layer',
+      'Biometric unlock via local_auth, tokens held in flutter_secure_storage',
+      'Signing and verification with PointyCastle and ASN.1',
+      'QR capture, OneSignal push, in-app PDF viewing',
+      'Release flavours for UAT and production, plus debug tooling for QA',
     ],
     scale: '237 Dart files · 42,483 lines',
   },
@@ -90,6 +98,7 @@ export const WORK: Project[] = [
     name: 'HCM Metro HURC',
     client: 'Utop',
     kind: 'Flutter SDK inside a third-party app',
+    runtime: 'Flutter',
     stack: ['Flutter', 'REST', 'eKYC'],
     summary:
       'A payment and account module that drops into the metro operator’s own application, so riders top up and link accounts without leaving it.',
@@ -104,6 +113,7 @@ export const WORK: Project[] = [
     name: 'Shinhan Life Vietnam',
     client: 'Utop',
     kind: 'Loyalty CRM, mobile + web',
+    runtime: 'Flutter · .NET MVC',
     stack: ['Flutter', '.NET MVC'],
     summary:
       'A points system embedded into an insurer’s main app: customers earn and redeem without a second login.',
@@ -117,35 +127,39 @@ export const WORK: Project[] = [
     name: 'British University Vietnam',
     client: 'Utop / British University Vietnam',
     kind: 'React Native student app',
-    stack: ['React Native', 'Redux', 'i18n'],
+    runtime: 'React Native 0.79 · React 19',
+    stack: ['React Native', 'Redux Toolkit', 'i18next', 'Vision Camera', 'Firebase'],
     summary:
       'Campus life in one app: attendance and academic progression, transcripts, a skills-point scheme, clubs and societies, events, library and schedules.',
     did: [
       'Attendance and academic-progression screens',
       'Skills-point claims, history and transcript views',
-      'Clubs, societies and event attendance flows',
-      'Bilingual interface throughout',
+      'Sign in with Apple, plus Firebase analytics and crashlytics',
+      'Bilingual interface throughout, on i18next',
     ],
-    scale: '271 source files',
+    scale: '267 files · 20,891 lines',
   },
   {
     name: 'MaisonOnline',
     client: 'Utop',
     kind: 'React Native commerce app, maintenance and upgrade',
-    stack: ['React Native', 'TypeScript'],
+    runtime: 'React Native 0.79 · React 19',
+    stack: ['React Native', 'Redux Saga', 'Vision Camera', 'Firebase'],
     summary:
       'A live shopping app I took over: browsing, ordering, payment. The interesting work was not features — it was moving a large codebase forward without breaking it.',
     did: [
-      'Upgraded the React Native core across major versions',
+      'Upgraded the React Native core across major versions, up to 0.79',
+      'Kept biometrics, camera and deep links working through the upgrade',
       'Fixed and reshaped UI against real customer feedback',
-      'Kept the release train running through the upgrade',
+      'Kept the release train running the whole way',
     ],
-    scale: '1,038 source files',
+    scale: '1,030 files · 100,404 lines',
   },
   {
     name: 'GreenOil',
     client: 'Freelance',
     kind: 'React Native — fuel order & invoice management',
+    runtime: 'React Native',
     stack: ['React Native'],
     summary:
       'My one freelance build: a system for a fuel distributor to raise orders, generate invoices against them, and keep the invoice records straight afterwards.',
@@ -159,6 +173,7 @@ export const WORK: Project[] = [
     name: 'Honda Vietnam',
     client: 'Utop',
     kind: 'WebView SDK, React',
+    runtime: 'React 18',
     stack: ['React', 'Framer Motion'],
     summary:
       'A loyalty surface that renders inside a native shell — lucky draw, gift history, consent. Animation carries the reward moment here, so it had to feel right, not just work.',
@@ -167,6 +182,7 @@ export const WORK: Project[] = [
       'Consent and gift-history flows',
       'A bridge layer between web and native shell',
     ],
+    scale: '105 files · 16,898 lines',
   },
 ]
 

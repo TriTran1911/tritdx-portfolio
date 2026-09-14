@@ -67,7 +67,7 @@ export function Experience() {
 export function Footer() {
   return (
     <footer className="hairline-t mx-6 flex flex-wrap items-center justify-between gap-4 py-8 font-mono text-2xs text-faint md:mx-12">
-      <p>Tri Tran Dao Xuan — built with React, GSAP and no template.</p>
+      <p>Tri Tran Dao Xuan</p>
       <p className="tnum">© {new Date().getFullYear()}</p>
     </footer>
   )
