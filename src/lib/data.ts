@@ -140,6 +140,7 @@ export const WORK: Project[] = [
     embedded: true,
     links: {
       ios: 'https://apps.apple.com/vn/app/my-shinhanlife/id6743426483',
+      android: 'https://play.google.com/store/apps/details?id=vn.com.shlv.cpo',
     },
     client: 'Utop',
     kind: 'Loyalty CRM, mobile + web',
