@@ -55,16 +55,29 @@ function Identity() {
 
       <div className="mt-5 flex flex-wrap gap-2">
         <IconLink href={`mailto:${CONTACT.email}`} label="Email">
-          <path d="M2 4h12v8H2z" /><path d="m2 5 6 4 6-4" />
+          <svg viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="currentColor"
+               strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+            <rect x="2" y="3.5" width="12" height="9" rx="1" />
+            <path d="m2.6 4.5 5.4 4 5.4-4" />
+          </svg>
         </IconLink>
         <IconLink href={`tel:${CONTACT.phone.replace(/\s/g, '')}`} label="Phone">
-          <path d="M4 2.5 6 2l1.5 3L6 6.2c.6 1.7 2.1 3.2 3.8 3.8L11 8.5 14 10l-.5 2c-.2.8-1 1.3-1.8 1.1C7.2 12.2 3.8 8.8 2.9 4.3c-.2-.8.3-1.6 1.1-1.8Z" />
+          <svg viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="currentColor"
+               strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+            <path d="M4 2.5 6 2l1.5 3L6 6.2c.6 1.7 2.1 3.2 3.8 3.8L11 8.5 14 10l-.5 2c-.2.8-1 1.3-1.8 1.1C7.2 12.2 3.8 8.8 2.9 4.3c-.2-.8.3-1.6 1.1-1.8Z" />
+          </svg>
         </IconLink>
+        {/* Dấu hiệu nhận diện chính thức của GitHub và LinkedIn: vẽ tay xấp xỉ
+            thì ra hình méo, mà đây là thứ người xem nhận ra bằng hình dáng. */}
         <IconLink href={`https://${CONTACT.github}`} label="GitHub">
-          <path d="M6.2 14v-2.2c-2.3.4-2.9-1.1-2.9-1.1-.4-1-1-1.3-1-1.3-.8-.5 0-.5 0-.5.9.1 1.4 1 1.4 1 .8 1.3 2 .9 2.5.7.1-.6.3-1 .6-1.2-2-.2-4-1-4-4.2 0-.9.3-1.6.8-2.2-.1-.2-.4-1 .1-2.1 0 0 .7-.2 2.2.8a7 7 0 0 1 4 0c1.5-1 2.2-.8 2.2-.8.5 1.1.2 1.9.1 2.1.5.6.8 1.3.8 2.2 0 3.2-2 4-4 4.2.3.3.6.8.6 1.6V14" />
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden>
+            <path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3Z" />
+          </svg>
         </IconLink>
         <IconLink href={`https://${CONTACT.linkedin}`} label="LinkedIn">
-          <path d="M3 6v8M3 3.2v.1M7 14V6M7 9.5c0-2 4-2 4 0V14" />
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden>
+            <path d="M4.98 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5ZM2.4 21h5.2V9.8H2.4V21Zm7.3 0h5.2v-6.2c0-3 3.6-3.3 3.6 0V21h5.2v-8c0-6.4-7-6.2-8.8-3v-.2H9.7V21Z" />
+          </svg>
         </IconLink>
       </div>
 
@@ -124,10 +137,7 @@ function IconLink({ href, label, children }: { href: string; label: string; chil
        rel={href.startsWith('http') ? 'noreferrer' : undefined}
        className="border-hairline text-faint flex h-9 w-9 items-center justify-center rounded-sm
                   border transition-colors duration-200 hover:border-brass hover:text-brass">
-      <svg viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="currentColor"
-           strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-        {children}
-      </svg>
+      {children}
     </a>
   )
 }

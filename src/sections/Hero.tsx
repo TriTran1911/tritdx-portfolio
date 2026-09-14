@@ -12,7 +12,10 @@ export function Hero() {
     return motionSafe(() => {
       // Tách theo ký tự chỉ dành cho tiêu đề ngắn — tách cả đoạn văn là tạo ra
       // hàng nghìn thẻ và làm hỏng trình đọc màn hình.
-      const split = new SplitText(el, { type: 'chars' })
+      // Phải tách cả 'words': chỉ tách 'chars' thì mỗi ký tự là một thẻ rời và
+      // trình duyệt được phép xuống dòng giữa chữ — câu này đã ngắt thành
+      // "peop / le" trên bản chạy thật.
+      const split = new SplitText(el, { type: 'words,chars' })
       const tl = gsap.timeline({ defaults: { ease: 'expo.out' } })
 
       tl.from(split.chars, {
