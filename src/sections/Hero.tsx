@@ -31,7 +31,11 @@ export function Hero() {
   }, [])
 
   return (
-    <header className="flex min-h-[86svh] flex-col justify-center px-6 py-20 md:px-12">
+    {/* Căn giữa trong khung cao 86svh chỉ hợp khi hero là thứ đầu tiên trên màn
+        hình. Trên điện thoại nó nằm dưới khối danh tính, nên căn giữa chỉ tạo
+        ra một khoảng trống rồi đẩy tiêu đề xuống thấp hơn nữa. */}
+    <header className="flex flex-col px-6 pb-16 pt-8 md:px-12
+                       lg:min-h-[86svh] lg:justify-center lg:py-20">
       <p data-hero-line className="eyebrow mb-6">
         {CONTACT.city} — available for frontend &amp; mobile work
       </p>
