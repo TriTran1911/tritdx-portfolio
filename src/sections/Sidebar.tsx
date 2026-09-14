@@ -12,7 +12,9 @@ export function Sidebar() {
                       px-6 pb-10 pt-10 md:px-10 lg:px-8 lg:pb-8">
         <Identity />
 
-        <nav className="mt-8" aria-label="Sections">
+        {/* Mục lục chỉ có ích khi cột trái dính một chỗ. Trên điện thoại nó là
+            một khối 170px đẩy câu tuyên bố xuống dưới màn hình đầu tiên. */}
+        <nav className="mt-8 hidden lg:block" aria-label="Sections">
           <ul className="space-y-0.5">
             <NavLink href="#work" n="01" label="Production work" />
             <NavLink href="#builds" n="03" label="Things I built" />
@@ -49,9 +51,15 @@ export function Sidebar() {
 function Identity() {
   return (
     <div>
-      <Portrait />
-      <h1 className="font-display mt-5 text-3xl leading-none">Tri Tran</h1>
-      <p className="text-brass mt-1.5 text-sm">Mobile &amp; Frontend Developer</p>
+      {/* Điện thoại: ảnh và tên nằm ngang cho gọn chiều cao. Từ lg trở lên cột
+          hẹp và dài nên xếp dọc lại. */}
+      <div className="flex items-center gap-4 lg:block">
+        <Portrait />
+        <div className="lg:mt-5">
+          <h1 className="font-display text-3xl leading-none">Tri Tran</h1>
+          <p className="text-brass mt-1.5 text-sm">Mobile &amp; Frontend Developer</p>
+        </div>
+      </div>
 
       <div className="mt-5 flex flex-wrap gap-2">
         <IconLink href={`mailto:${CONTACT.email}`} label="Email">
