@@ -29,48 +29,43 @@ export function Hero() {
     })
   }, [])
 
-  // Căn giữa trong khung cao 86svh chỉ hợp khi hero là thứ đầu tiên trên màn
-  // hình. Trên điện thoại nó nằm dưới khối danh tính, nên căn giữa chỉ tạo ra
-  // một khoảng trống rồi đẩy tiêu đề xuống thấp hơn nữa.
+  /* Không ép chiều cao nữa. Bản trước dùng min-h-[86svh] nên trên màn hình
+     950px cao, phần hero cao 817px trong khi nội dung chỉ 555px — thừa 262px
+     trống không vì lý do gì. Giờ để nội dung tự quyết chiều cao. */
   return (
-    <header className="flex flex-col px-6 pb-16 pt-8 md:px-12
-                       lg:min-h-[86svh] lg:justify-center lg:py-20">
-      {/* Trên màn hình rộng, chữ chỉ chiếm khoảng 600px trong cột 1170px, bỏ
-          trống gần 470px bên phải. Cho danh sách ngành vào đó. */}
+    <header className="px-6 pb-16 pt-8 md:px-12 lg:py-24">
+      {/* Trên màn hình rộng, chữ chỉ chiếm khoảng 600px trong cột 1170px. Cho
+          danh sách ngành vào chỗ trống bên phải. */}
       <div className="xl:grid xl:grid-cols-[minmax(0,1fr)_210px] xl:items-start xl:gap-12">
         <div>
-      <p data-hero-line className="eyebrow mb-6">
-        {CONTACT.city} — available for frontend &amp; mobile work
-      </p>
+          <p data-hero-line className="eyebrow mb-6">
+            {CONTACT.city} — available for frontend &amp; mobile work
+          </p>
 
-      {/* Tên đã nằm ở cột trái rồi, nên đầu cột phải là câu tuyên bố chứ không
-          lặp lại tên. Đây là chỗ khác lớn nhất so với bản một cột trước đây. */}
-      <h1 ref={head}
-          className="font-display max-w-[15ch] text-[clamp(2.5rem,6.5vw,5.5rem)]
-                     leading-[0.95] tracking-[-0.02em]">
-        I build the apps people actually pay with.
-      </h1>
+          {/* Tên đã nằm ở cột trái rồi, nên đầu cột phải là câu tuyên bố chứ
+              không lặp lại tên.
+              Trần cỡ chữ nâng từ 5.5rem lên 7rem: ở 1512px thì 15ch chỉ chiếm
+              607px trong cột 816px, chữ to hơn lấp được chỗ đó bằng chính nó
+              thay vì phải độn thêm nội dung. */}
+          <h1 ref={head}
+              className="font-display max-w-[15ch] text-[clamp(2.5rem,6.8vw,7rem)]
+                         leading-[0.95] tracking-[-0.02em]">
+            I build the apps people actually pay with.
+          </h1>
 
-      <div data-hero-rule className="my-8 h-px max-w-[60ch] origin-left bg-hairline" />
+          <div data-hero-rule className="my-8 h-px max-w-[60ch] origin-left bg-hairline" />
 
-      <div className="max-w-[62ch] space-y-4">
-        <p data-hero-line className="text-xl leading-snug md:text-2xl">
-          Metro fares, insurance points, mall loyalty — in{' '}
-          <span className="text-brass">Flutter</span> and{' '}
-          <span className="text-brass">React Native</span>.
-        </p>
-        <p data-hero-line className="text-muted">
-          And when the work gets slow, I build the tool that makes it fast. Most of what
-          follows is production code for real customers; the last two are mine.
-        </p>
-      </div>
-
-      <a data-hero-line href="#experience"
-         className="text-faint mt-12 inline-flex w-fit items-center gap-2 font-mono text-xs
-                    transition-colors duration-200 hover:text-bone">
-        <span className="h-px w-8 bg-current" />
-        scroll
-      </a>
+          <div className="max-w-[62ch] space-y-4">
+            <p data-hero-line className="text-xl leading-snug md:text-2xl">
+              Metro fares, insurance points, mall loyalty — in{' '}
+              <span className="text-brass">Flutter</span> and{' '}
+              <span className="text-brass">React Native</span>.
+            </p>
+            <p data-hero-line className="text-muted">
+              And when the work gets slow, I build the tool that makes it fast. Most of what
+              follows is production code for real customers; the last two are mine.
+            </p>
+          </div>
         </div>
 
         <Domains />
