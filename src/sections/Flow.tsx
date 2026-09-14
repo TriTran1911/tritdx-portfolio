@@ -1,12 +1,13 @@
 import { useEffect, useRef } from 'react'
 import { gsap, motionSafe, ScrollTrigger } from '../lib/motion.ts'
 
-/* Phần duy nhất được ghim lại khi cuộn.
+/* Một gói tin chạy từ app qua proxy tới backend rồi rơi xuống thành dòng log.
+ * Xem xong là hiểu api·log làm gì, không cần đọc đoạn văn nào.
  *
- * Ghim là thứ tốn kém và dễ gây khó chịu, nên chỉ dùng một lần, và chỉ khi
- * chuyển động GIẢI THÍCH được điều gì đó: ở đây một gói tin chạy từ app qua
- * proxy tới backend rồi rơi xuống thành một dòng log. Xem xong là hiểu api·log
- * làm gì, không cần đọc đoạn văn nào. */
+ * Bản trước ghim mục này lại và gắn tiến trình vào vị trí cuộn (scrub). Cuộn
+ * ngược lên là gói tin chạy giật lùi và các dòng log biến mất — trông như lỗi
+ * render. Cách đó còn thêm 220% chiều cao cuộn giả chỉ để xem một hình.
+ * Giờ chỉ chạy một lần khi lọt vào màn hình rồi đứng yên. */
 export function Flow() {
   const root = useRef<HTMLDivElement>(null)
 
@@ -16,12 +17,7 @@ export function Flow() {
 
     return motionSafe(
       () => {
-        // Timeline tự chạy tay chứ không dùng scrub. Scrub buộc tiến trình bám
-        // sát vị trí cuộn theo CẢ HAI chiều, nên cuộn ngược lên là gói tin chạy
-        // giật lùi về app và các dòng log biến mất — trông như lỗi render.
-        // Ở đây chỉ cho tiến trình tăng: cuộn xuống thì chạy, cuộn lên giữ yên.
         const tl = gsap.timeline({ paused: true })
-        let reached = 0
 
         tl.from('[data-node]', { opacity: 0, y: 18, duration: 0.4, stagger: 0.12 })
 
@@ -35,18 +31,13 @@ export function Flow() {
           .from('[data-logrow]', { opacity: 0, x: -14, duration: 0.4, stagger: 0.18 }, '-=0.3')
           .from('[data-caption]', { opacity: 0, y: 10, duration: 0.5 }, '-=0.4')
 
+        // Chạy đúng một lần khi mục lọt vào màn hình, rồi đứng ở trạng thái
+        // cuối vĩnh viễn. Cuộn ngược lên không đụng gì tới nó.
         const st = ScrollTrigger.create({
           trigger: el,
-          start: 'top top',
-          end: '+=220%',
-          pin: true,
-          anticipatePin: 1,
-          onUpdate: self => {
-            if (self.progress > reached) {
-              reached = self.progress
-              tl.progress(reached)
-            }
-          },
+          start: 'top 70%',
+          once: true,
+          onEnter: () => tl.play(),
         })
 
         return () => { st.kill(); tl.kill() }
@@ -60,7 +51,7 @@ export function Flow() {
   }, [])
 
   return (
-    <div ref={root} id="flow" className="flex min-h-svh flex-col justify-center px-6 py-24 md:px-12">
+    <div ref={root} id="flow" className="px-6 py-24 md:px-12">
       <p className="eyebrow mb-8">03 — how api·log works</p>
 
       <div className="overflow-x-auto">
