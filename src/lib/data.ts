@@ -252,3 +252,21 @@ export const FOCUS: string[] = [
   'Data modelling when the tool calls for it',
 ]
 
+
+/* Các ngành đã làm, rút từ chính WORK phía trên — không phải thông tin mới:
+   FamilyMart Vietnam + CapitaOne (bán lẻ), HCM Metro HURC (giao thông công
+   cộng), Shinhan Life Vietnam (bảo hiểm nhân thọ), British University Vietnam
+   (giáo dục), MaisonOnline (thương mại điện tử), GreenOil (phân phối nhiên
+   liệu), Honda Vietnam (loyalty hãng xe).
+
+   Để ở đầu trang vì đây là thứ nhà tuyển dụng quét trước: đã đụng vào những
+   ngành nào. Danh sách tên dự án thì đã có ở mục Production work, lặp lại là
+   thừa — nên ở đây nói theo ngành. */
+export const DOMAINS: string[] = [
+  'Retail loyalty',
+  'Transit payments',
+  'Life insurance',
+  'Higher education',
+  'E-commerce',
+  'Fuel distribution',
+]

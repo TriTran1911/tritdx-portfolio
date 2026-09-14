@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { gsap, SplitText, motionSafe } from '../lib/motion.ts'
-import { CONTACT } from '../lib/data.ts'
+import { CONTACT, DOMAINS } from '../lib/data.ts'
 
 export function Hero() {
   const head = useRef<HTMLHeadingElement>(null)
@@ -35,6 +35,10 @@ export function Hero() {
   return (
     <header className="flex flex-col px-6 pb-16 pt-8 md:px-12
                        lg:min-h-[86svh] lg:justify-center lg:py-20">
+      {/* Trên màn hình rộng, chữ chỉ chiếm khoảng 600px trong cột 1170px, bỏ
+          trống gần 470px bên phải. Cho danh sách ngành vào đó. */}
+      <div className="xl:grid xl:grid-cols-[minmax(0,1fr)_210px] xl:items-start xl:gap-12">
+        <div>
       <p data-hero-line className="eyebrow mb-6">
         {CONTACT.city} — available for frontend &amp; mobile work
       </p>
@@ -61,12 +65,34 @@ export function Hero() {
         </p>
       </div>
 
-      <a data-hero-line href="#work"
+      <a data-hero-line href="#experience"
          className="text-faint mt-12 inline-flex w-fit items-center gap-2 font-mono text-xs
                     transition-colors duration-200 hover:text-bone">
         <span className="h-px w-8 bg-current" />
         scroll
       </a>
+        </div>
+
+        <Domains />
+      </div>
     </header>
+  )
+}
+
+/* Ẩn dưới xl: trên điện thoại khối danh tính đã chiếm gần hết màn hình đầu,
+   thêm nữa là đẩy câu tuyên bố xuống quá sâu. */
+function Domains() {
+  return (
+    <div data-hero-line className="mt-14 hidden xl:mt-0 xl:block">
+      <p className="eyebrow hairline-t pt-3">Domains shipped in</p>
+      <ul className="mt-3 space-y-1.5">
+        {DOMAINS.map(d => (
+          <li key={d} className="text-muted flex gap-2.5 text-sm leading-snug">
+            <span aria-hidden className="bg-brass mt-2 h-px w-2.5 shrink-0" />
+            <span>{d}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
   )
 }

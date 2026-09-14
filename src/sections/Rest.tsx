@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { motionSafe, revealChildren } from '../lib/motion.ts'
-import { ROLES } from '../lib/data.ts'
+import { ROLES, WORK } from '../lib/data.ts'
 import { SectionHead } from './Work.tsx'
 
 function useReveal<T extends HTMLElement>(stagger = 0.08) {
@@ -23,19 +23,42 @@ export function Experience() {
       {/* Dòng thời gian: đường dọc chạy suốt, mỗi mốc một chấm. Đường kẻ nằm ở
           ::before của khối bao nên không cần thẻ rỗng chỉ để vẽ. */}
       <ol ref={list}
-          className="relative max-w-[72ch] before:absolute before:bottom-2 before:left-[3px]
+          className="relative before:absolute before:bottom-2 before:left-[3px]
                      before:top-2 before:w-px before:bg-hairline">
-        {ROLES.map(r => (
-          <li key={r.company} className="relative pb-9 pl-7 last:pb-0">
-            <span aria-hidden
-                  className="border-brass bg-ground absolute left-0 top-[7px] h-[7px] w-[7px]
-                             rounded-full border" />
-            <p className="tnum text-faint font-mono text-2xs">{r.from} — {r.to}</p>
-            <h3 className="font-display mt-1.5 text-2xl leading-none">{r.company}</h3>
-            <p className="text-brass mt-1 text-sm">{r.title} · {r.place}</p>
-            <p className="text-muted mt-2 max-w-[58ch] text-sm leading-relaxed">{r.note}</p>
-          </li>
-        ))}
+        {ROLES.map(r => {
+          // Dự án nào thuộc vai trò nào lấy thẳng từ trường client của WORK,
+          // không khai báo tay ở hai nơi rồi lệch nhau.
+          const shipped = WORK.filter(p => p.client.includes(r.company))
+          return (
+            <li key={r.company} className="relative pb-9 pl-7 last:pb-0">
+              <span aria-hidden
+                    className="border-brass bg-ground absolute left-0 top-[7px] h-[7px] w-[7px]
+                               rounded-full border" />
+              <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_280px] lg:items-start lg:gap-10">
+                <div>
+                  <p className="tnum text-faint font-mono text-2xs">{r.from} — {r.to}</p>
+                  <h3 className="font-display mt-1.5 text-2xl leading-none">{r.company}</h3>
+                  <p className="text-brass mt-1 text-sm">{r.title} · {r.place}</p>
+                  <p className="text-muted mt-2 max-w-[58ch] text-sm leading-relaxed">{r.note}</p>
+                </div>
+
+                <div className="mt-5 lg:mt-0">
+                  <p className="eyebrow hairline-t pt-3">
+                    Shipped here · {shipped.length}
+                  </p>
+                  <ul className="mt-3 space-y-1.5">
+                    {shipped.map(p => (
+                      <li key={p.name} className="text-muted text-sm leading-snug">
+                        {p.name}
+                        <span className="text-faint"> — {p.kind}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </li>
+          )
+        })}
       </ol>
     </section>
   )
