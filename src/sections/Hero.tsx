@@ -34,9 +34,11 @@ export function Hero() {
      trống không vì lý do gì. Giờ để nội dung tự quyết chiều cao. */
   return (
     <header className="px-6 pb-16 pt-8 md:px-12 lg:py-24">
-      {/* Trên màn hình rộng, chữ chỉ chiếm khoảng 600px trong cột 1170px. Cho
-          danh sách ngành vào chỗ trống bên phải. */}
-      <div className="xl:grid xl:grid-cols-[minmax(0,1fr)_210px] xl:items-start xl:gap-12">
+      {/* Cột chữ chặn ở 640px thay vì 1fr. Để 1fr thì cột rộng 816px trong khi
+          tiêu đề chỉ tới 607px, dư 209px nằm im bên trong rồi cộng thêm khoảng
+          cách 48px — hai cột cách nhau 257px, nhìn như hai mảng rời nhau.
+          minmax(0,640px) vẫn co lại được ở màn hình hẹp hơn nên không tràn. */}
+      <div className="xl:grid xl:grid-cols-[minmax(0,640px)_210px] xl:items-start xl:gap-12">
         <div>
           <p data-hero-line className="eyebrow mb-6">
             {CONTACT.city} — available for frontend &amp; mobile work

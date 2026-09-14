@@ -41,6 +41,10 @@ export interface Project {
    *  (app thu ngân) và SDK nhúng vào app của bên khác thì không có link — để
    *  trống chứ không trỏ sang app gần giống. */
   links?: { ios?: string; android?: string }
+  /** Đặt true khi phần mình làm là module chạy BÊN TRONG app của bên khác.
+   *  Link khi đó trỏ tới app của khách hàng, không phải app của mình — nhãn
+   *  phải nói đúng điều đó, nếu không là nhận vơ cả sản phẩm. */
+  embedded?: boolean
   /** Mã nguồn công khai. Chỉ điền khi repo thật sự public — link tới repo
    *  private thì người xem bấm vào chỉ thấy trang 404.
    *  api·log để private theo yêu cầu: công cụ nội bộ, source lưu trên GitHub
@@ -113,6 +117,11 @@ export const WORK: Project[] = [
   },
   {
     name: 'HCM Metro HURC',
+    embedded: true,
+    links: {
+      ios: 'https://apps.apple.com/vn/app/hcmc-metro-hurc/id6449395180',
+      android: 'https://play.google.com/store/apps/details?id=com.fts.metro',
+    },
     client: 'Utop',
     kind: 'Flutter SDK inside a third-party app',
     runtime: 'Flutter',
@@ -128,6 +137,10 @@ export const WORK: Project[] = [
   },
   {
     name: 'Shinhan Life Vietnam',
+    embedded: true,
+    links: {
+      ios: 'https://apps.apple.com/vn/app/my-shinhanlife/id6743426483',
+    },
     client: 'Utop',
     kind: 'Loyalty CRM, mobile + web',
     runtime: 'Flutter · .NET MVC',
@@ -196,6 +209,11 @@ export const WORK: Project[] = [
   },
   {
     name: 'Honda Vietnam',
+    embedded: true,
+    links: {
+      ios: 'https://apps.apple.com/vn/app/my-honda/id1482745552',
+      android: 'https://play.google.com/store/apps/details?id=vn.co.honda.hondacrm',
+    },
     client: 'Utop',
     kind: 'WebView SDK, React',
     runtime: 'React 18',
