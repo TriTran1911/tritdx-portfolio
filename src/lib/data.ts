@@ -236,9 +236,8 @@ export const CONTACT = {
 }
 
 /* ─── Cột trái và dải số liệu ────────────────────────────────────────────
-   Mọi con số dưới đây đã có sẵn ở WORK/BUILDS phía trên, chỉ là đang nằm
-   trong hàng phải bấm mới mở. Đưa lên đầu trang để người quét thấy ngay.
-   Sửa số ở trên thì sửa cả ở đây. */
+   Nội dung cho cột trái. Số liệu từng có một dải riêng ở đầu trang, đã bỏ
+   theo yêu cầu — các con số vẫn nằm trong từng dự án ở WORK/BUILDS. */
 
 export const ABOUT =
   'Flutter and React Native developer, at Utop since 2023. Metro fares, insurance ' +
@@ -253,9 +252,3 @@ export const FOCUS: string[] = [
   'Data modelling when the tool calls for it',
 ]
 
-export const STATS: { value: string; note: string }[] = [
-  { value: '3 apps · 1,294 files', note: 'FamilyMart Vietnam platform' },
-  { value: '42,483 lines', note: 'CapitaOne Flutter codebase' },
-  { value: '53 tables', note: 'DMS append-only ledger' },
-  { value: '8 production apps', note: 'shipped since 2023' },
-]

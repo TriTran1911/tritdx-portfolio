@@ -106,15 +106,19 @@ function Identity() {
 }
 
 /* Ảnh chân dung là tuỳ chọn: chưa có file thì hiện chữ tắt, không vỡ bố cục
-   và không để lại ô ảnh hỏng. */
+   và không để lại ô ảnh hỏng.
+   Thử lần lượt .jpg rồi .png — nếu chỉ chấp nhận một đuôi thì lưu nhầm đuôi
+   kia là ảnh im lặng không hiện, mà lỗi đó rất khó đoán ra. */
+const SOURCES = ['/portrait.jpg', '/portrait.png']
+
 function Portrait() {
-  const [ok, setOk] = useState(true)
+  const [i, setI] = useState(0)
   return (
-    <div className="border-hairline ring-brass/25 h-20 w-20 overflow-hidden rounded-full
+    <div className="border-hairline ring-brass/25 h-20 w-20 shrink-0 overflow-hidden rounded-full
                     border ring-1 ring-offset-2 ring-offset-ground">
-      {ok ? (
-        <img src="/portrait.jpg" alt="Tri Tran" width={80} height={80}
-             className="h-full w-full object-cover" onError={() => setOk(false)} />
+      {i < SOURCES.length ? (
+        <img src={SOURCES[i]} alt="Tri Tran" width={80} height={80}
+             className="h-full w-full object-cover" onError={() => setI(n => n + 1)} />
       ) : (
         <div className="bg-surface font-display text-muted flex h-full w-full items-center
                         justify-center text-2xl leading-none">

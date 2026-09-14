@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { gsap, SplitText, motionSafe } from '../lib/motion.ts'
-import { CONTACT, STATS } from '../lib/data.ts'
+import { CONTACT } from '../lib/data.ts'
 
 export function Hero() {
   const head = useRef<HTMLHeadingElement>(null)
@@ -24,7 +24,6 @@ export function Hero() {
       })
         .from('[data-hero-line]', { opacity: 0, y: 16, duration: 0.6, stagger: 0.09 }, '-=0.45')
         .from('[data-hero-rule]', { scaleX: 0, duration: 0.9, ease: 'expo.inOut' }, '-=0.6')
-        .from('[data-stat]', { opacity: 0, y: 14, duration: 0.5, stagger: 0.07 }, '-=0.5')
 
       return () => { split.revert(); tl.kill() }
     })
@@ -62,8 +61,6 @@ export function Hero() {
         </p>
       </div>
 
-      <Stats />
-
       <a data-hero-line href="#work"
          className="text-faint mt-12 inline-flex w-fit items-center gap-2 font-mono text-xs
                     transition-colors duration-200 hover:text-bone">
@@ -71,21 +68,5 @@ export function Hero() {
         scroll
       </a>
     </header>
-  )
-}
-
-/* Số liệu vốn đã nằm trong từng dự án, nhưng ở đó phải bấm mở mới thấy.
-   Nhà tuyển dụng quét trang trong vài giây — đưa bốn con số đáng kể nhất
-   lên ngay đầu, mỗi con số kèm chỗ nó đến từ đâu. */
-function Stats() {
-  return (
-    <dl className="mt-12 grid max-w-[62ch] gap-x-8 gap-y-5 sm:grid-cols-2">
-      {STATS.map(s => (
-        <div data-stat key={s.value} className="hairline-t pt-3">
-          <dt className="text-brass tnum font-mono text-sm">{s.value}</dt>
-          <dd className="text-faint mt-0.5 text-sm">{s.note}</dd>
-        </div>
-      ))}
-    </dl>
   )
 }
