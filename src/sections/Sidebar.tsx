@@ -111,15 +111,16 @@ function Identity() {
    kia là ảnh im lặng không hiện, mà lỗi đó rất khó đoán ra. */
 const SOURCES = ['/portrait.jpg', '/portrait.png']
 
+/* object-[center_28%]: ảnh thẻ là ảnh dọc, mặt nằm ở phần trên khung. Cắt tròn
+   căn giữa sẽ ra cằm và ngực. Nếu thay bằng ảnh đã cắt vuông thì đổi lại
+   object-center. */
+
 function Portrait() {
   const [i, setI] = useState(0)
   return (
     <div className="border-hairline ring-brass/25 h-20 w-20 shrink-0 overflow-hidden rounded-full
                     border ring-1 ring-offset-2 ring-offset-ground">
       {i < SOURCES.length ? (
-        {/* Neo theo 28% chiều cao chứ không phải giữa: ảnh thẻ là ảnh dọc, mặt
-            nằm ở phần trên: cắt tròn căn giữa sẽ ra cằm và ngực. Nếu sau này
-            thay bằng ảnh đã cắt vuông thì đổi lại thành object-center. */}
         <img src={SOURCES[i]} alt="Tri Tran" width={80} height={80}
              className="h-full w-full object-cover object-[center_28%]"
              onError={() => setI(n => n + 1)} />
