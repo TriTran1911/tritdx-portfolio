@@ -34,7 +34,13 @@ export function Experience() {
               <span aria-hidden
                     className="border-brass bg-ground absolute left-0 top-[7px] h-[7px] w-[7px]
                                rounded-full border" />
-              <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_280px] lg:items-start lg:gap-10">
+              {/* Cùng lỗi đã sửa ở hero: để 1fr thì cột chữ kéo dài 726px trong khi
+                  đoạn văn chỉ tới 469px (bị chặn ở 58ch), nên cột "Shipped here"
+                  bị đẩy ra xa 297px. Chặn cột chữ ở 500px cho vừa đúng bề rộng
+                  chữ thật.
+                  Đổi luôn ngưỡng lg -> xl: ở 1024px thì chia đôi chỉ còn 250px
+                  cho đoạn văn, quá hẹp để đọc. */}
+              <div className="xl:grid xl:grid-cols-[minmax(0,500px)_280px] xl:items-start xl:gap-10">
                 <div>
                   <p className="tnum text-faint font-mono text-2xs">{r.from} — {r.to}</p>
                   <h3 className="font-display mt-1.5 text-2xl leading-none">{r.company}</h3>
@@ -42,7 +48,7 @@ export function Experience() {
                   <p className="text-muted mt-2 max-w-[58ch] text-sm leading-relaxed">{r.note}</p>
                 </div>
 
-                <div className="mt-5 lg:mt-0">
+                <div className="mt-5 xl:mt-0">
                   <p className="eyebrow hairline-t pt-3">
                     Shipped here · {shipped.length}
                   </p>
